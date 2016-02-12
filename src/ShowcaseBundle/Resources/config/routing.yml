@@ -1,3 +1,12 @@
 showcase_homepage:
     path:     /
     defaults: { _controller: ShowcaseBundle:Default:index }
+
+showcase:
+    resource: "@ShowcaseBundle/Controller/"
+    type:   annotation
+    prefix:   /a/
+
+welcome:
+    path:     /welcome/{_locale}
+    defaults: { _controller: ShowcaseBundle:Trans:welcome }
