@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<title>Raw | Form</title>
+
+{% if app.session.flashbag.has('raw') %}
+<div>
+	{% for i_raw in app.session.flashbag.get('raw') %}
+		<pre><code>{{ i_raw }}</code></pre>
+	{% endfor %}
+</div>
+{% endif %}
+
+<form action="{{ url('form_raw_submit') }}" method="post">
+	<input type="text" name="field">
+	<input type="submit">
+</form>

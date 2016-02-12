@@ -10,3 +10,12 @@ showcase:
 welcome:
     path:     /welcome/{_locale}
     defaults: { _controller: ShowcaseBundle:Trans:welcome }
+
+form_raw:
+    path:     /form/raw
+    defaults: { _controller: ShowcaseBundle:Form:raw }
+
+form_raw_submit:
+    path:     /form/raw/submit
+    defaults: { _controller: ShowcaseBundle:Form:rawSubmit }
+    methods: [POST]
