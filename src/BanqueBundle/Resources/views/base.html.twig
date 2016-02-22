@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Banque</title>
+	<meta charset="utf-8">
+	<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+	<style>
+		main { display: block; }
+		.menu { border: 1px solid black;border-radius: 5px;padding: 5px 10px; }
+	</style>
+</head>
+<body>
+<header>
+	<h1>Banque ()</h1>
+	<nav class="menu">
+		<a href="{{ url('banque_homepage') }}">Accueil</a> |
+		<a href="{{ url('banque_inscription') }}">Inscription</a> |
+		<a href="{{ url('banque_gestion') }}">Gestion</a> |
+		<a href="{{ url('banque_admin') }}">Admin</a>
+	</nav>
+</header>
+<main>
+	{% for message in app.session.flashbag.get('messages') %}
+        <p>{{ message }}</p>
+	{% endfor %}
+	{% block content %}{% endblock %}
+</main>
+</body>
+</html>

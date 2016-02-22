@@ -1,0 +1,15 @@
+{% extends 'BanqueBundle:base.html.twig' %}
+
+{% block content %}
+    <h1>Service de gestion de crédits</h1>
+    {% for success in app.session.flashbag.get('success') %}
+        {% if success %}
+            <p>Inscription réussie</p>
+        {% endif %}
+    {% endfor %}
+    <form action="{{ url('banque_create') }}" method="post">
+        <label>Nom <input type="text" name="Name"></label>
+        <label>Numéro <input type="text" value="{{ number }}" name="Number"></label>
+        <button type="submit" name="add">S'inscrire</button>
+    </form>
+{% endblock %}

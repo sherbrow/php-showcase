@@ -1,0 +1,22 @@
+banque_homepage:
+    path:     /
+    defaults: { _controller: BanqueBundle:Banque:accueil }
+banque_admin:
+    path:     /admin
+    defaults: { _controller: BanqueBundle:Banque:admin }
+banque_create:
+    path:     /inscription
+    defaults: { _controller: BanqueBundle:Banque:create }
+    methods: [POST]
+banque_inscription:
+    path:     /inscription
+    defaults: { _controller: BanqueBundle:Banque:inscription }
+banque_gestion:
+    path:     /gestion/{number}
+    defaults: 
+        _controller: BanqueBundle:Banque:gestion
+        number: null
+banque_delete:
+    path:     /delete/{number}
+    defaults: { _controller: BanqueBundle:Banque:delete }
+    methods: [DELETE]

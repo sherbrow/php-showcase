@@ -1,0 +1,46 @@
+{% extends 'BanqueBundle:base.html.twig' %}
+
+{% block content %}
+
+<h1>Service de gestion de crédits</h1>
+<table border="1">
+    <caption>Comptes</caption>
+    <tr>
+        <th>Numéro de compte</th>
+        <th>Nom</th>
+        <th>Crédits</th>
+        <th>Utilisateur</th>
+        <th></th>
+    </tr>
+{% for account in accounts %} 
+    <tr>
+        <td>{{ account.number }}</td>
+        <td>{{ account.name }}</td>
+        <td>{{ account.credits }}</td>
+        <td>{{ account.idUser }}</td>
+        <td>
+            <a href="{{ url('banque_gestion', {'number' : account.number }) }}">Modifier</a>
+            <form action="{{ url('banque_delete', {'number' : account.number }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Supprimer</button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+<table border="1">
+    <caption>Utilisateurs</caption>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Password</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>***</td>
+    </tr>
+</table>
+	
+{% endblock %}
