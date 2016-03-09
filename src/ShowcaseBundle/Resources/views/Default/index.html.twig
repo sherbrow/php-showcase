@@ -1,1 +1,17 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<title>Index | Default</title>
+
 Hello World!
+
+<table>
+{% for route in routes %}
+    <tr>
+        <td><a href="{{ urls[loop.index0] }}">Goto: {{ route.path }}</a></td>
+        <td>{{ route.path }}</td>
+        <td>{{ route.methods|length > 0 ? route.methods|join(', ') : 'ANY' }}</td>
+        <td>{{ route.defaults._controller }}</td>
+    </tr>
+{% endfor %}
+</table>
