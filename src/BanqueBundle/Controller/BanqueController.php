@@ -5,6 +5,7 @@ namespace BanqueBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use BanqueBundle\Entity\Account;
+use BanqueBundle\Libraries\AccountUtils;
 
 class BanqueController extends Controller
 {
@@ -15,9 +16,11 @@ class BanqueController extends Controller
 
     public function inscriptionAction(Request $request)
     {
-        $number = ''; // TODO
+        $account = new Account();
+        $number = AccountUtils::generateAccountNumber();
+        $account->setNumber($number);
         
-        return $this->render('BanqueBundle:inscription.html.twig', compact('number'));
+        return $this->render('BanqueBundle:inscription.html.twig', compact('account'));
     }
 
     public function createAction(Request $request)
@@ -29,6 +32,15 @@ class BanqueController extends Controller
         $account->setName($name);
         $account->setNumber($number);
         $account->setCredits(1500);
+        
+        $validator = $this->get('validator');
+        $errors = $validator->validate($account);
+        
+        if(count($errors) > 0) {
+            return $this->render('BanqueBundle:inscription.html.twig'
+                , compact('account', 'errors')
+            );
+        }
         
         $em = $this->getDoctrine()->getManager();
         $em->persist($account);

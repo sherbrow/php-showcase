@@ -3,6 +3,7 @@
 namespace BanqueBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Account
@@ -17,6 +18,7 @@ class Account
      *
      * @ORM\Id
      * @ORM\Column(name="Number", type="string", length=255)
+     * @Assert\Length(min=4,max=4,exactMessage="Le nombre doit avoir 4 caractères")
      */
     private $number;
     

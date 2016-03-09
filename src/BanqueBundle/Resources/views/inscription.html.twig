@@ -7,9 +7,16 @@
             <p>Inscription réussie</p>
         {% endif %}
     {% endfor %}
+    {% if errors is defined %}
+    <ul>
+        {% for error in errors %}
+            <li>{{ error.message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <form action="{{ url('banque_create') }}" method="post">
-        <label>Nom <input type="text" name="Name"></label>
-        <label>Numéro <input type="text" value="{{ number }}" name="Number"></label>
+        <label>Nom <input type="text" name="Name" value="{{ account.name }}"></label>
+        <label>Numéro <input type="text" value="{{ account.number }}" name="Number"></label>
         <button type="submit" name="add">S'inscrire</button>
     </form>
 {% endblock %}
