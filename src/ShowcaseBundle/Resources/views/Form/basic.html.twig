@@ -1,0 +1,12 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<title>Basic | Form</title>
+
+{% if message %}
+    {{ message }}
+{% endif %}
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}

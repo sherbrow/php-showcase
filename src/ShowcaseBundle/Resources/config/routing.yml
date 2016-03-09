@@ -19,3 +19,7 @@ form_raw_submit:
     path:     /form/raw/submit
     defaults: { _controller: ShowcaseBundle:Form:rawSubmit }
     methods: [POST]
+
+form_basic:
+    path:     /form/basic
+    defaults: { _controller: ShowcaseBundle:Form:basicForm }
