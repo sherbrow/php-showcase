@@ -12,7 +12,7 @@ class AnoTransController extends Controller
      */
     public function welcomeAction()
     {
-        return $this->render('ShowcaseBundle:TransController:welcome.html.twig');
+        return $this->render('ShowcaseBundle:Trans:welcome.html.twig');
     }
 
 }
