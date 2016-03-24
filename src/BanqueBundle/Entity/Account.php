@@ -17,7 +17,7 @@ class Account
      * @var string
      *
      * @ORM\Id
-     * @ORM\Column(name="Number", type="string", length=255)
+     * @ORM\Column(name="Number", type="string", length=4)
      * @Assert\Length(min=4,max=4,exactMessage="Le nombre doit avoir 4 caractères")
      */
     private $number;

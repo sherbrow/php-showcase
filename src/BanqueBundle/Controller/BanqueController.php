@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use BanqueBundle\Entity\Account;
 use BanqueBundle\Libraries\AccountUtils;
+use BanqueBundle\Form\AccountType;
+use Symfony\Component\Form\Extension\Core\Type as FormType;
 
 class BanqueController extends Controller
 {
@@ -20,25 +22,44 @@ class BanqueController extends Controller
         $number = AccountUtils::generateAccountNumber();
         $account->setNumber($number);
         
-        return $this->render('BanqueBundle:inscription.html.twig', compact('account'));
+        $form = $this->createForm(AccountType::class, $account);
+        
+        return $this->render('BanqueBundle:inscription.html.twig',
+            compact('account') + [
+                'form' => $form->createView(),
+            ]
+        );
     }
 
     public function createAction(Request $request)
     {
-        $number = $request->get('Number');
-        $name = $request->get('Name');
+        // $number = $request->get('Number');
+        // $name = $request->get('Name');
         
-        $account = new Account();
-        $account->setName($name);
-        $account->setNumber($number);
-        $account->setCredits(1500);
+        // $account = new Account();
+        // $account->setName($name);
+        // $account->setNumber($number);
+        // $account->setCredits(1500);
         
-        $validator = $this->get('validator');
-        $errors = $validator->validate($account);
+        // $validator = $this->get('validator');
+        // $errors = $validator->validate($account);
         
-        if(count($errors) > 0) {
-            return $this->render('BanqueBundle:inscription.html.twig'
-                , compact('account', 'errors')
+        // if(count($errors) > 0) {
+        //     return $this->render('BanqueBundle:inscription.html.twig'
+        //         , compact('account', 'errors')
+        //     );
+        // }
+        
+        $form = $this->createForm(AccountType::class);
+        $form->handleRequest($request);
+        
+        $account = $form->getData();
+        
+        if (!$form->isValid()) {
+            return $this->render('BanqueBundle:inscription.html.twig',
+                compact('account') + [
+                    'form' => $form->createView(),
+                ]
             );
         }
         

@@ -20,3 +20,7 @@ banque_delete:
     path:     /delete/{number}
     defaults: { _controller: BanqueBundle:Banque:delete }
     methods: [DELETE]
+
+banque_agents:
+    prefix:     /agents
+    resource: agents.yml

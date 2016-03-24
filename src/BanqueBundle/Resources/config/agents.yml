@@ -1,0 +1,28 @@
+agents_index:
+    path:     /
+    defaults: { _controller: BanqueBundle:Agents:index }
+    methods: [GET]
+agents_add:
+    path:     /add
+    defaults: { _controller: BanqueBundle:Agents:add }
+    methods: [GET]
+agents_show:
+    path:     /{id}
+    defaults: { _controller: BanqueBundle:Agents:show }
+    methods: [GET]
+agents_modify:
+    path:     /{id}/edit
+    defaults: { _controller: BanqueBundle:Agents:modify }
+    methods: [GET]
+agents_create:
+    path:     /
+    defaults: { _controller: BanqueBundle:Agents:create }
+    methods: [PUT]
+agents_update:
+    path:     /{id}
+    defaults: { _controller: BanqueBundle:Agents:update }
+    methods: [POST]
+agents_delete:
+    path:     /{id}
+    defaults: { _controller: BanqueBundle:Agents:delete }
+    methods: [DELETE]

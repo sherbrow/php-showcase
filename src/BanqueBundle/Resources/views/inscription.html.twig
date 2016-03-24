@@ -19,4 +19,8 @@
         <label>Numéro <input type="text" value="{{ account.number }}" name="Number"></label>
         <button type="submit" name="add">S'inscrire</button>
     </form>
+    <hr>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 {% endblock %}

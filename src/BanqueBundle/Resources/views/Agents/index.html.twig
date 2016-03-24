@@ -1,0 +1,30 @@
+{% extends 'BanqueBundle:base.html.twig' %}
+
+{% block content %}
+
+<h1>Agents</h1>
+<table border="1">
+    <caption>Agents</caption>
+    <tr>
+        <th>{{ 'Id'|trans }}</th>
+        <th>{{ 'Name'|trans }}</th>
+        <th></th>
+    </tr>
+{% for agent in agents %} 
+    <tr>
+        <td>{{ agent.id }}</td>
+        <td>{{ agent.name }}</td>
+        <td>
+            <a href="{{ url('agents_modify', {'id' : agent.id }) }}">{{ 'Modifier'|trans }}</a>
+            <form action="{{ url('agents_delete', {'id' : agent.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">{{ 'Supprimer'|trans }}</button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+<a href="{{ url('agents_add') }}">{{ 'Add'|trans }}</a>
+
+{% endblock %}

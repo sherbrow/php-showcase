@@ -1,3 +1,11 @@
+app_client:
+    resource: "@AppBundle/Controller/ClientController.php"
+    type:     annotation
+
+app_agent:
+    resource: "@AppBundle/Controller/AgentController.php"
+    type:     annotation
+
 banque:
     resource: "@BanqueBundle/Resources/config/routing.yml"
     prefix:   /
